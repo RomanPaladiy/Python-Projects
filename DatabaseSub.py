@@ -23,11 +23,27 @@ conn = sqlite3.connect('submission.db')
 with conn:
     cur = conn.cursor()
     cur.execute("INSERT INTO tbl_submission(col_file) VALUES (?)", \
-                ('Hello.txt'))
+                ('Hello.txt',))
     cur.execute("INSERT INTO tbl_submission(col_file) VALUES (?)", \
-                ('World.txt'))
+                ('World.txt',))
     conn.commit()
 conn.close()
+
+# calling another connection for changes to be made 
+conn = sqlite3.connect('submission.db')
+
+
+with conn:
+    cur = conn.cursor()
+    cur.execute(" SELECT * FROM tbl_submission")
+    varFile = cur.fetchall()
+    for item in varFile:
+        msg = "File Name: {}".format(item[1])
+        print(msg)
+
+
+
+
     
                 
 
