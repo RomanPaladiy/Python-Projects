@@ -17,7 +17,7 @@ class Customer(User):
     gender = 'Male'
     age = '27'
 
-    def shop(self):
+    def information(self):
         msg = "\nMy name is Tom and I love shopping here!"
         return msg 
 
@@ -29,7 +29,7 @@ class Employee(User):
     gender = 'Female'
     age = '32'
 
-    def work(self):
+    def information(self):
         msg = "\nMy name is Sherry and I love my current job!"
         return msg
 
