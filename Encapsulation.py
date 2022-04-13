@@ -1,3 +1,4 @@
+# Creating first class for the protected variable
 class Protected:
     def __init__(self):
         self.protectedVar = 0
@@ -7,7 +8,7 @@ object._protectedVar = 'This code is protected!'
 print(object._protectedVar)
 
 
-
+# Creating second class for the private variable
 class Private:
     def __init__(self):
         self.__privateVar = 'This is a private variable!'
@@ -17,7 +18,7 @@ class Private:
 
     def setPrivate(self, private):
         self.__privateVar = private
-
+# Calling them to work
 object = Private()
 object.getPrivate()
 object.setPrivate(45)
