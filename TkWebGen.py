@@ -1,4 +1,5 @@
 import tkinter
+import webbrowser
 from tkinter import *
 
 # Basic tkinter window
@@ -32,25 +33,38 @@ class ParentWindow(Frame):
 
     
 
-
-
-        htmlcode = "<DOCTYPE HTML><head></head><body>" + userText + "</body></html>"
-
 # submits the input from user
     def submit(self):
         ut = self.varinput.get()
-        userText = txtinput.get()
         self.lblDisplay.config(text='Input Received!',fg="Green".format(ut))
-        htmlcode = "<DOCTYPE HTML><head></head><body>" + userText + "</body></html>"
-
         
+# concatenating the strings together
+        htmlCode1 = """<html>
+                        <body>
+                            <h1>"""
+                         
+        htmlCode2 = """</h1>
+                        </body>
+                      </html>"""
+        
+        htmlCodeFinal = htmlCode1 + ut + htmlCode2
+          
+        # defining the fileName to it can open it in google chrome
+        fileName = 'webpage.html'
+
+        f = open(fileName, 'w')
+        f.write(htmlCodeFinal)
+        f.close()
+
+        # this allows for the function to open the new tab with the url provided above
+        webbrowser.open_new(fileName)
+
+
 
 # ends the widget on cancelation
     def cancel(self):
         self.master.destroy()
         
-        
-
 
 if __name__ == "__main__":
     root = Tk()
