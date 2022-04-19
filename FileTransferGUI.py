@@ -2,7 +2,7 @@
 import tkinter
 from tkinter import *
 from tkinter import ttk, filedialog
-from tkinter.filedialog import askopenfile
+from tkinter.filedialog import askdirectory
 
 # Creating a basic tkinter window
 class ParentWindow(Frame):
@@ -19,21 +19,15 @@ class ParentWindow(Frame):
 
 
         # Adding labels in the widget
-        self.lblDisplay = Label(self.master, text= "Click Button to Browse Files.", font =('Helvetica',16),fg="black",bg="LightGray")
+        self.lblDisplay = Label(self.master, text= "Click Button to Browse Folders.", font =('Helvetica',16),fg="black",bg="LightGray")
         self.lblDisplay.pack(pady=10)
 
 
-        def open_file():
-            file = filedialog.askopenfile(mode='r', filetypes=[('Text Files' , '*.txt')])
-            if file:
-                content = file.read()
-                file.close()
                 
 
 
-
 # Creating a button
-        ttk.Button(self.master, text= "Browse", command=open_file).pack(pady=20)
+        ttk.Button(self.master, text= "Browse", command=askdirectory).pack(pady=20)
 
 
         
