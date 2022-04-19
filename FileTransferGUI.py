@@ -1,70 +1,60 @@
 # Importing the required Libraries
 import tkinter
 from tkinter import *
-from tkinter import ttk, filedialog
-from tkinter.filedialog import askdirectory
+from tkinter import  filedialog
+import shutil
+import os
+import datetime
+import time 
+
+from numpy import pad
+
+def source_directory():
+        dirName = filedialog.askdirectory()
+        sourceDir.delete(0,END)
+        sourceDir.insert(0,dirName)
+
+
+def destination_directory():
+        dirName = filedialog.askdirectory()
+        destinationDir.delete(0,END)
+        destinationDir.insert(0,dirName)
+
+
+m = tkinter.Tk()
 
 # Creating a basic tkinter window
-class ParentWindow(Frame):
-    def __init__(self, master):
-        Frame.__init__ (self)
-
 
 # Design/sizing of the window
-        self.master = master
-        self.master.resizable(width= True, height= True)
-        self.master.geometry('{}x{}'.format(700,400))
-        self.master.title('File Transfer')
-        self.master.config(bg='LightGray')
+m.minsize(750,150)
+m.title('File Transfer')
+m.config(bg='LightGray')
 
-
-        # Adding labels in the widget
-        self.lblDisplay = Label(self.master, text= "Click Button to Browse Folders.", font =('Helvetica',16),fg="black",bg="LightGray")
-        self.lblDisplay.pack(pady=10)
-
-
-                
 
 
 # Creating a button
-        ttk.Button(self.master, text= "Browse", command=askdirectory).pack(pady=20)
+button1 = Button(m, text= "Browse", padx=20, command=source_directory)
+button1.grid(row=0, column=0,padx=(20,10),pady=(30,0))
+sourceDir = Entry(m,width=100)
+sourceDir.grid(row=0, column=1,padx=20,pady=(30,0), sticky=E)
 
+
+# Creating the second button 
+button2 = Button(m, text= "Browse",  padx=20, command=destination_directory)
+button2.grid(row=0, column=0,padx=(20,10),pady=(100,0))
+destinationDir = Entry(m,width=100)
+destinationDir.grid(row=0, column=1, padx=20,pady=(100,0), sticky=E)
+
+
+m.mainloop()
 
         
 
 
 
-            
-        
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-if __name__ == "__main__":
-    root = Tk()
-    App = ParentWindow(root)
-    root.mainloop()
-
-
-
-
-
-
-
-
-
-
-    
