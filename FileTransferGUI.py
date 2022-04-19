@@ -8,7 +8,7 @@ import os
 import time
 import datetime
 
-
+# defining the time for it to check 
 SECONDS_IN_DAY = 24 * 60 * 60
 now = time.time()
 before = now - SECONDS_IN_DAY
