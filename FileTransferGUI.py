@@ -1,13 +1,10 @@
 # Importing the required Libraries
+from importlib.resources import path
 import tkinter
 from tkinter import *
 from tkinter import  filedialog
 import shutil
 import os
-import datetime
-import time 
-
-from numpy import pad
 
 def source_directory():
         dirName = filedialog.askdirectory()
@@ -45,6 +42,16 @@ button2.grid(row=0, column=0,padx=(20,10),pady=(100,0))
 destinationDir = Entry(m,width=100)
 destinationDir.grid(row=0, column=1, padx=20,pady=(100,0), sticky=E)
 
+
+# File Transfer 
+source = sourceDir
+destination = destinationDir
+
+files = os.listdir(path)
+
+for i in files:
+        # this is saying move the files represented by 'i' to their destination
+        shutil.move(source+i, destination)
 
 m.mainloop()
 
